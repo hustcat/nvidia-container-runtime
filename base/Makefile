@@ -20,8 +20,7 @@ debian%: $(CURDIR)/Dockerfile.debian
 	                -t "nvidia/base/debian:$*" -f Dockerfile.debian .
 
 centos%: $(CURDIR)/Dockerfile.centos
-	$(DOCKER) build --build-arg VERSION_ID="$*" \
-	                --build-arg GOLANG_VERSION="$(GOLANG_VERSION)" \
+	$(DOCKER) build --build-arg GOLANG_VERSION="$(GOLANG_VERSION)" \
 	                -t "nvidia/base/centos:$*" -f Dockerfile.centos .
 
 amzn%: $(CURDIR)/Dockerfile.amzn

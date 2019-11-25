@@ -105,8 +105,7 @@ amzn1: $(addsuffix -amzn1, 18.03.1 17.12.1 17.09.1 17.06.2 17.03.2)
 
 %-centos7:
 	runc="$(shell $(MAKE) -s $@-runc)" && \
-	$(DOCKER) build --build-arg VERSION_ID="7" \
-                        --build-arg RUNC_COMMIT="$${runc}" \
+	$(DOCKER) build --build-arg RUNC_COMMIT="$${runc}" \
                         --build-arg PKG_VERS="$(VERSION)" \
                         --build-arg PKG_REV="$(PKG_REV).docker$*" \
                         -t "nvidia/runtime/centos:7-docker$*" -f Dockerfile.centos .

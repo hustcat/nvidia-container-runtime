@@ -27,8 +27,7 @@ debian%: $(CURDIR)/Dockerfile.debian
 	$(DOCKER) run --rm -v $(DIST_DIR)/$@:/dist:Z "nvidia/hook/debian:$*"
 
 centos%: $(CURDIR)/Dockerfile.centos
-	$(DOCKER) build --build-arg VERSION_ID="$*" \
-	                --build-arg PKG_VERS="$(VERSION)" \
+	$(DOCKER) build --build-arg PKG_VERS="$(VERSION)" \
 	                --build-arg PKG_REV="$(PKG_REV)" \
 	                -t "nvidia/hook/centos:$*" -f Dockerfile.centos .
 	$(DOCKER) run --rm -v $(DIST_DIR)/$@:/dist:Z "nvidia/hook/centos:$*"
